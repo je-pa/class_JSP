@@ -11,5 +11,7 @@
 		헿
 	</div>
 	<div><a href="examJavascript.jsp">자바스크립트 연습</a></div>
+	<div><a href="screptlet.jsp">자바스크립트 연습2</a></div>
+	<div><a href="mission1.jsp">스크립틀릿 이해1</a></div>
 </body>
 </html>
