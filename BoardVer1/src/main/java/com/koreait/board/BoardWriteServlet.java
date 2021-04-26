@@ -28,7 +28,9 @@ public class BoardWriteServlet extends HttpServlet {
 		vo.setCtnt(ctnt);
 		//왼쪽에 title 오른쪽에 ctnt
 		
-		Database.list.add(vo);
+		Database.list.add(vo);//우리가 만든 클래스(BoardO 객체 리스트)
+		
+		//Database.insert(title, ctnt); 이것도 가능은 함
 		
 		response.sendRedirect("/list");//get방식으로 주소 이동
 	}

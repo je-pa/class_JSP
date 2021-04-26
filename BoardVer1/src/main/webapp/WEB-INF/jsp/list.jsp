@@ -10,6 +10,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	tabli,th,td{
+		border:1px solid black;
+		border-collapse:collapse;
+	}
+</style>
 </head>
 <body>
 	
@@ -18,11 +24,21 @@
 		<a href ="/write">글쓰기</a>			
 	</div>
 	<div>
+		<table>
+			<tr>
+				<th>no</th>
+				<th>제목</th>
+			</tr>
 		<% for(int i=0;i<list.size();i++) {
-			BoardVO vo = list.get(i);
+			BoardVO vo = list.get(i); 
 		%>
-			<div><%=i %>, <%=vo.getTitle() %>,<%=vo.getCtnt() %></div>
+			<tr>
+				<td><%=i %></td>
+				<td><a href="/detail?no=<%=i%>"><%=vo.getTitle() %></a></td>
+				<!--,vo.getCtnt()-->
+			</tr>
 		<% } %>
+		</table>
 	</div>
 </body>
 </html>

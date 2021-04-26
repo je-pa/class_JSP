@@ -1,6 +1,6 @@
 package com.koreait.board;
 
-public class BoardVO {
+public class BoardVO {//Value Object -> getter setter 밖에 없을거다
 	private int iboard;
 	private String title;
 	private String ctnt;
