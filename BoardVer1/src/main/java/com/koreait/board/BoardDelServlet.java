@@ -10,11 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/del")
 public class BoardDelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String no =request.getParameter("no");
 		Database.list.remove(Integer.parseInt(no));
