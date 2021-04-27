@@ -19,6 +19,7 @@
 			<input type = "hidden" name="no" value="<%=no%>">
 			<input type="submit" value="삭제">
 		</form>
+		<a href ="/mod?no=<%=no %>"><button>수정</button></a>
 		
 	</div>
 	<div>제목 : <%=vo.getTitle() %></div>
