@@ -1,8 +1,6 @@
-package com.koreait.board;
+package com.kita.board;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,5 +17,9 @@ public class BoardListServlet extends HttpServlet {
 		String jsp = "/WEB-INF/jsp/list.jsp";
 		request.getRequestDispatcher(jsp).forward(request, response);
 	}
-}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+
+}
