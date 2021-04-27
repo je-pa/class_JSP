@@ -25,10 +25,15 @@ public class BoardModServlet extends HttpServlet {
 		String ctnt = request.getParameter("ctnt");
 		String no = request.getParameter("no");
 		
+		BoardVO vo =Database.list.get(Integer.parseInt(no));
+		vo.setCtnt(ctnt);
+		vo.setTitle(title);
+		/*
 		BoardVO vo =new BoardVO();
 		vo.setCtnt(ctnt);
 		vo.setTitle(title);
 		Database.list.set(Integer.parseInt(no), vo);
+		*/
 		response.sendRedirect("/detail?no="+no);
 	}
 }
