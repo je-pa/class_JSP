@@ -1,4 +1,4 @@
-package com.kita.board;
+package com.koreait.board2;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -13,14 +13,20 @@ public class BoardModServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String no = request.getParameter("no");
-		request.setAttribute("data",Database.list.get(Integer.parseInt(no)));
+		request.setAttribute("data", Database.db.get(Integer.parseInt(no)));
 		
-		String jsp= "/WEB-INF/jsp/mod.jsp";
-		request.getRequestDispatcher(jsp).forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/jsp/mod.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String no = request.getParameter("no");
+		System.out.println(no);
+		BoardVO vo = Database.db.get(Integer.parseInt(no));
+		String title = request.getParameter("title");
+		String ctnt = request.getParameter("ctnt");
+		vo.setTitle(title);
+		vo.setCtnt(ctnt);
+		response.sendRedirect("/list");
 	}
 
 }

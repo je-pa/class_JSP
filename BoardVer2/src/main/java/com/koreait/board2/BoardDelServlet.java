@@ -1,4 +1,4 @@
-package com.kita.board;
+package com.koreait.board2;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/del")
 public class BoardDelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String no = request.getParameter("no");
-		Database.list.remove(Integer.parseInt(no));
+		System.out.println(no);
+		Database.db.remove(Integer.parseInt(no));
 		response.sendRedirect("/list");
 	}
+
 }
