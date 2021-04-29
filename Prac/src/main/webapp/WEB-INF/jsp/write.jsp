@@ -7,11 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>글쓰기</h1>
-	<form action ="/write" method="post">
-		<div><input type="text" name="title"></div>
-		<div><textarea name="ctnt" rows ="10" cols="10"></textarea></div>
-		<input type="submit" value="글쓰기">
+	<form action="/write" method="post">
+		<input type="text" name="title">
+		<div><textarea name="ctnt" cols="10" rows="10"></textarea></div>
+		<div><input type="submit" value="글쓰기완료"></div>
 	</form>
 </body>
 </html>

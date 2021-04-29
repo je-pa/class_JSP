@@ -1,4 +1,3 @@
-<%@page import="com.kita.board.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,14 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%	String no=request.getParameter("no"); 
-		BoardVO vo = (BoardVO)request.getAttribute("data");
-	%>
-	<form action ="/mod" method="post">
-		<input type="hidden" name ="name" value=no>
-		<div><input type="text" name="title" value="<%=vo.getTitle() %>"></div>
-		<div><textarea name="ctnt" rows ="10" cols="10"><%=vo.getCtnt() %></textarea></div>
-		<input type="submit" value="글쓰기">
+	<form action="/mod" method="post">
+		<div><input type="text" name="title" value="${vo.title}"></div>
+		<div><textarea cols="10" rows="10" name="ctnt">${vo.ctnt}</textarea></div>
+		<input type="hidden" name="no" value="${param.no }">
+		<input type="submit" value="수정완료">
+		<input type="reset" value="초기화">
 	</form>
 </body>
 </html>
