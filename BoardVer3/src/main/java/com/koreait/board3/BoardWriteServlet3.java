@@ -22,10 +22,11 @@ public class BoardWriteServlet3 extends HttpServlet {
 		System.out.println(title+" "+ctnt);
 		
 		BoardVO3 vo3 = new BoardVO3();
-		vo3.setCtnt(ctnt);
 		vo3.setTitle(title);
+		vo3.setCtnt(ctnt);
+		
+		BoardDAO.insertBoard(vo3);
 		
 		response.sendRedirect("/list3");
 	}
-
 }
