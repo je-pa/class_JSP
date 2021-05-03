@@ -12,7 +12,7 @@ import java.util.List;
 public class BoardDAO {
 	//글등록
 	public static int insertBoard(BoardVO3 vo) {
-		Connection con = null;
+		Connection con = null;//연결
 		PreparedStatement ps =null;
 		
 		String sql=" INSERT INTO t_board (title,ctnt) "
@@ -44,13 +44,40 @@ public class BoardDAO {
 		PreparedStatement ps =null;
 		
 		String sql=" DELETE FROM t_board"
-					+ "WHERE iboard=? ";
+					+ " WHERE iboard=? ";
 		
 		try {
 			con = DBUtils.getCon();
 			ps = con.prepareStatement(sql);//준비하라@!
 			
 			ps.setInt(1, vo.getIboard());
+			
+			return ps.executeUpdate(); //예도 예외를 던져주기 때문에 그냥 한꺼번에 잡아줌
+			//완성된 문장이 실행됨 insert, update, delete
+			//int 값이 나옴 : 몇개의 행에 영향을 주었는지 리턴
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBUtils.close(con, ps);
+		}
+		
+		return 0;
+	}
+	
+	public static int updBoard(BoardVO3 vo) {
+		Connection con = null;
+		PreparedStatement ps =null;
+		
+		String sql="UPDATE t_board SET title=?, ctnt=? WHERE iboard=?";
+		//UPDATE Reservation SET RoomNum = 2002 WHERE Name = '홍길동';
+		
+		try {
+			con = DBUtils.getCon();
+			ps = con.prepareStatement(sql);//준비하라@!
+			
+			ps.setString(1, vo.getTitle());//string!!
+			ps.setString(2, vo.getCtnt());
+			ps.setInt(3, vo.getIboard());
 			
 			return ps.executeUpdate(); //예도 예외를 던져주기 때문에 그냥 한꺼번에 잡아줌
 			//완성된 문장이 실행됨 insert, update, delete
@@ -71,7 +98,8 @@ public class BoardDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;//select에 필요
 		
-		String sql = "SELECT iboard, title, regdt FROM t_board";//;하면 해킹위험
+		String sql = "SELECT iboard, title, regdt FROM t_board "
+				+ "ORDER BY iboard DESC";//;하면 해킹위험
 		
 		try {
 			con = DBUtils.getCon();
@@ -129,7 +157,7 @@ public class BoardDAO {
 				vo.setIboard(iboard);
 				vo.setTitle(title);
 				vo.setRegdt(regdt);	
-				vo.setRegdt(ctnt);	
+				vo.setCtnt(ctnt);	
 				
 				return vo;
 			}

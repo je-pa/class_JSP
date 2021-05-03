@@ -11,9 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 public class BoardDelServlet3 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String iboard = request.getParameter("iboard");
+//		BoardDAO.deleteBoard(Integer.parseInt(iboard));
 		
-		//BoardDAO.deleteBoard();
+		BoardVO3 param = new BoardVO3();
+		param.setIboard(Integer.parseInt(iboard));
+		
+		BoardDAO.deleteBoard(param);
 		
 		response.sendRedirect("/list3");
 	}

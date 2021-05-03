@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>글쓰기</title>
 </head>
 <body>
 	<form action="/write" method="post">
-		<input type="text" name="title">
-		<div><textarea name="ctnt" cols="10" rows="10"></textarea></div>
-		<div><input type="submit" value="글쓰기완료"></div>
+		<div><input type="text" name="title"></div>
+		<div><textarea rows="10" cols="10" name = "ctnt"></textarea></div>
+		<input type="submit" value="글쓰기">
 	</form>
 </body>
 </html>

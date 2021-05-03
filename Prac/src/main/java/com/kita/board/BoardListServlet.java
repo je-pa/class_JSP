@@ -12,8 +12,6 @@ public class BoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("list", Database.list);
-		
 		request.getRequestDispatcher("/WEB-INF/jsp/list.jsp").forward(request, response);
 	}
 
