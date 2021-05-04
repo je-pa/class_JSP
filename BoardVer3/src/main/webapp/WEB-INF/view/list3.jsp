@@ -23,7 +23,7 @@
 		<table>
 			<tr><th>no</th><th>제목</th><th>작성일</th></tr>
 			<c:forEach items ="${list}" var="item">
-				<tr class = "record"  onclick = "moveToDetail(${item.iboard});">
+				<tr class = "record"  onclick = "moveToDetail(${item.iboard})">
 					<td>${item.iboard}</td>
 					<td>${item.title}</td>
 					<td>${item.regdt}</td>
