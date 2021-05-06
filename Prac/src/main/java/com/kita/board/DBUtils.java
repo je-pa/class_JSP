@@ -9,7 +9,7 @@ public class DBUtils {
 	public static Connection getCon() throws Exception{
 		final String DB_NAME = "pracdb1";
 		final String DRIVER = "com.mysql.cj.jdbc.Driver";
-		final String URL="jdbc:mysql://localhost:3308/pracdb1";
+		final String URL="jdbc:mysql://localhost:3308/"+DB_NAME;
 		final String USER_NAME="root";
 		final String PASSWORD ="koreait";
 		
@@ -35,4 +35,3 @@ public class DBUtils {
 		}
 	}
 }
-

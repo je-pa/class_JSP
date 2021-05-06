@@ -5,6 +5,7 @@ public class BoardVO {
 	private String title;
 	private String ctnt;
 	private String regdt;
+	private int boardCount;
 	public int getIboard() {
 		return iboard;
 	}
@@ -29,4 +30,11 @@ public class BoardVO {
 	public void setRegdt(String regdt) {
 		this.regdt = regdt;
 	}
+	public int getBoardCount() {
+		return boardCount;
+	}
+	public void setBoardCount(int boardCount) {
+		this.boardCount = boardCount;
+	}
+	
 }
