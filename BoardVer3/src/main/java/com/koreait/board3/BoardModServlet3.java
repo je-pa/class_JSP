@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.koreait.utils.BoardDAO;
+import com.koreait.utils.BoardVO3;
+import com.koreait.utils.MyUtils;
+
 @WebServlet("/mod3")
 public class BoardModServlet3 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -15,8 +19,7 @@ public class BoardModServlet3 extends HttpServlet {
 		String iboard = request.getParameter("iboard");
 		BoardVO3 data= BoardDAO.selBoard(Integer.parseInt(iboard));
 		request.setAttribute("data", data);
-		
-		request.getRequestDispatcher("/WEB-INF/view/mod3.jsp").forward(request, response);
+		MyUtils.openJSP("mod3", request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

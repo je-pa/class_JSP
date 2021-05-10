@@ -1,4 +1,4 @@
-package com.koreait.board3;
+package com.koreait.utils;
 
 public class BoardVO3 {
 	private int iboard;

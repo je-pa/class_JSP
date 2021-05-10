@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoardDAO {
+	
 	 public static List<BoardVO> selBoardList(){
 		 List<BoardVO> list = new ArrayList<BoardVO>();
 		 Connection con = null;
@@ -35,6 +36,7 @@ public class BoardDAO {
 		 
 		 return list;
 	 }
+	
 	 
 	 public static BoardVO selBoard(int iboard) {
 		 Connection con = null;

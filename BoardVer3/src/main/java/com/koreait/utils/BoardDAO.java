@@ -1,4 +1,4 @@
-package com.koreait.board3;
+package com.koreait.utils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

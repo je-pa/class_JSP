@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.koreait.utils.BoardDAO;
+import com.koreait.utils.BoardVO3;
+import com.koreait.utils.MyUtils;
+
 @WebServlet("/list3")
 public class BoardListServlet3 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -18,7 +22,6 @@ public class BoardListServlet3 extends HttpServlet {
 		//파라미터가 없다는 것은 다 델고 오겠다 범위를 지정하지 않겠다.
 		request.setAttribute("list",list);
 		
-		request.getRequestDispatcher("/WEB-INF/view/list3.jsp").forward(request, response);
+		MyUtils.openJSP("list3", request, response);
 	}
-
 }
