@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import com.koreait.board4.DBUtils;
 
 public class UserDAO {
@@ -43,7 +45,10 @@ public class UserDAO {
 			ps.setString(1, param.getUid());
 			rs=ps.executeQuery();
 			if(rs.next()) {
-				if(rs.getString("upw").equals(param.getUpw())) {
+				String dbPw = rs.getString("upw");
+				if(BCrypt.checkpw(param.getUpw()/*원래값*/,dbPw/*암호됨*/ )) {
+					param.setIuser(rs.getInt("iuser"));
+					param.setUnm(rs.getString("unm"));
 					return 1;
 				}else {
 					return 3;
