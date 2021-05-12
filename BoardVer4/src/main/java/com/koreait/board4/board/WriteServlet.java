@@ -26,6 +26,7 @@ public class WriteServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int iuser = MyUtils.getLoginUserPK(request);
 		BoardVO vo = new BoardVO();
 		vo.setTitle(request.getParameter("title"));
 		vo.setCtnt(request.getParameter("ctnt"));
