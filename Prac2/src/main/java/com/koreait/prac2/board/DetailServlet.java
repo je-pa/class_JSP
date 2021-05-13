@@ -17,9 +17,4 @@ public class DetailServlet extends HttpServlet {
 		request.setAttribute("vo", BoardDAO.selBoard(MyUtils.getIntParam("iboard", request)));
 		MyUtils.openJSP("board/detail", request, response);
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
-
 }

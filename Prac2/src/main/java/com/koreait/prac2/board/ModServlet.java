@@ -14,6 +14,9 @@ public class ModServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(MyUtils.getLoginUser(request)==null) {
+			
+		}
 		MyUtils.openJSP("board/mod", request, response);
 	}
 
