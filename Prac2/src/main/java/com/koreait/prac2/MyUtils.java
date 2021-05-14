@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.koreait.prac2.board.BoardDAO;
 import com.koreait.prac2.user.UserVO;
 
 public class MyUtils {
@@ -15,8 +16,8 @@ public class MyUtils {
 	public static int stringToInt(String str) {
 		return Integer.parseInt(str);
 	}
-	public static int getIntParam(String str , HttpServletRequest req) {
-		return stringToInt(req.getParameter(str));
+	public static int getIntParam(String key , HttpServletRequest req) {
+		return stringToInt(req.getParameter(key));
 	}
 	public static UserVO getLoginUser(HttpServletRequest req) {
 		if(req==null) {	return null;}
@@ -25,4 +26,7 @@ public class MyUtils {
 	public static int getLoginUserPK(HttpServletRequest req) {
 		return getLoginUser(req).getIuser();
 	}
+	/*public static boolean checkLoginUser(String key, HttpServletRequest req) {
+		
+	}*/
 }
