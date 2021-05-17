@@ -38,7 +38,7 @@ public class BoardDAO {
 		
 		return list;
 	}
-	public static BoardVO selBoard(int iboard) {
+	public static BoardVO selBoard(BoardVO param) {
 		Connection con =null;
 		PreparedStatement ps =null;
 		ResultSet rs = null;
@@ -47,7 +47,7 @@ public class BoardDAO {
 		try {
 			con = DBUtils.getCon();
 			ps=con.prepareStatement(sql);
-			ps.setInt(1, iboard);
+			ps.setInt(1, param.getIboard());
 			rs=ps.executeQuery();
 			if(rs.next()) {
 				BoardVO vo=new BoardVO();

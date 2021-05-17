@@ -14,7 +14,9 @@ public class ModServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BoardVO vo = BoardDAO.selBoard(MyUtils.getParamInt("iboard", request));
+		BoardVO param = new BoardVO();
+		param.setIboard(MyUtils.getParamInt("iboard", request));
+		BoardVO vo = BoardDAO.selBoard(param);
 		System.out.println(MyUtils.getParamInt("iboard", request));
 		if(MyUtils.getLoginUser(request)==null) {
 			response.sendRedirect("/user/login");
@@ -33,7 +35,9 @@ public class ModServlet extends HttpServlet {
 			response.sendRedirect("/user/login");
 			return;
 		}
-		if(MyUtils.getLoginUserPK(request)!=BoardDAO.selBoard(MyUtils.getParamInt("iboard", request)).getIuser()) {
+		BoardVO param = new BoardVO();
+		param.setIboard(MyUtils.getParamInt("iboard", request));
+		if(MyUtils.getLoginUserPK(request)!=BoardDAO.selBoard(param).getIuser()) {
 			response.sendRedirect("/board/detail");
 			return;
 		}

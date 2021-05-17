@@ -14,6 +14,17 @@ public class DelServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		BoardVO param = new BoardVO();
+		param.setIboard(MyUtils.getParamInt("iboard", request));
+		BoardVO vo = BoardDAO.selBoard(param);
+		if(MyUtils.getLoginUser(request)==null) {
+			response.sendRedirect("/user/login");
+			return;
+		}
+		if(MyUtils.getLoginUserPK(request)!=vo.getIuser()) {
+			response.sendRedirect("/board/detail");
+			return;
+		}
 		BoardDAO.delBoard(MyUtils.getParamInt("iboard", request));
 		response.sendRedirect("list");
 	}

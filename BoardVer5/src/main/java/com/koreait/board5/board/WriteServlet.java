@@ -26,11 +26,11 @@ public class WriteServlet extends HttpServlet {
 			response.sendRedirect("/user/login");
 			return;
 		}
-		BoardVO vo = new BoardVO();
-		vo.setTitle(request.getParameter("title"));
-		vo.setCtnt(request.getParameter("ctnt"));
-		vo.setIuser(MyUtils.getLoginUserPK(request));
-		BoardDAO.insertBoard(vo);
+		BoardVO param = new BoardVO();
+		param.setTitle(request.getParameter("title"));
+		param.setCtnt(request.getParameter("ctnt"));
+		param.setIuser(MyUtils.getLoginUserPK(request));
+		BoardDAO.insertBoard(param);
 		response.sendRedirect("list");
 	}
 
