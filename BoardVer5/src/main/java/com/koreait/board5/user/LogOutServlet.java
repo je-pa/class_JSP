@@ -12,7 +12,9 @@ public class LogOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("loginUser", null);
+		request.getSession().invalidate();
+		//request.getSession().setAttribut("loginUser",null);
+		//request.getSession().removeAttrivute("loginUser겠지?");
 		response.sendRedirect("login");
 	}
 

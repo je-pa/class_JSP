@@ -16,6 +16,10 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(MyUtils.getLoginUser(request)!=null) {
+			response.sendRedirect("/board/list");
+			return;
+		}
 		MyUtils.openJSP("user/login", request, response);
 	}
 
