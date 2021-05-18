@@ -20,17 +20,18 @@
 			<a href="mod?iboard=${vo.iboard }">수정</a>
 		</div>
 	</c:if>
-	<form action="cmt" method="post">
+	<form id="insFrm" action="cmt" method="post">
 		<textarea name="cmt"></textarea>
 		<input type="hidden" name="icmt" value="0">
 		<input type="hidden" name="iboard" value="${vo.iboard}">
 		<input type="submit" value="댓글등록">
 	</form>
-	<form action="cmt" method="post" class="hidden">
+	<form id="updFrm" action="cmt" method="post" class="hidden">
 		<textarea name="cmt"></textarea>
 		<input type="hidden" name="icmt" value="0">
 		<input type="hidden" name="iboard" value="${vo.iboard}">
-		<input type="submit" value="댓글등록">
+		<input type="submit" value="댓글수정">
+		<input type="button" value="수정취소" onclick="">
 	</form>
 	<table>
 		<tr>
@@ -43,8 +44,8 @@
 				<td>${item.regdate }</td>
 				<td>
 					<c:if test="${loginUser.iuser==item.iuser }">
-						<button>수정</button>
-						<button>삭제</button>
+						<button onclick = "">수정</button>
+						<button onclick = "">삭제</button>
 					</c:if>
 				</td>
 			</tr>
