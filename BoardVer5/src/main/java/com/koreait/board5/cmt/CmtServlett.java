@@ -30,19 +30,23 @@ public class CmtServlett extends HttpServlet {
 			response.sendRedirect("/user/login");
 			return;
 		}
+		int icmt = MyUtils.getParamInt("icmt", request);
 		int iboard =MyUtils.getParamInt("iboard",request);
 		String cmt =request.getParameter("cmt");
 		int iuser = MyUtils.getLoginUserPK(request);
 		
 		CmtVO param =new CmtVO();
 		
-		param.setIboard(iboard);
 		param.setCmt(cmt);
 		param.setIuser(iuser);
 //		System.out.printf("%d, %d, %s", iboard, cmt, iuser);
-		
-		CmtDAO.insCmt(param);
-		
+		if(icmt !=0) {
+			param.setIcmt(icmt);
+			CmtDAO.updCmt(param);	
+		} else {
+			param.setIboard(iboard);
+			CmtDAO.insCmt(param);
+		}
 		response.sendRedirect("detail?iboard="+ iboard);
 	}
 }

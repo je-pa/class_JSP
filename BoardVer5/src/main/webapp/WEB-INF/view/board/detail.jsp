@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>디테일</title>
+<style>
+	.hidden{display:none;}
+</style>
 <script defer src="/res/js/boardDetail.js"></script>
 </head>
 <body>
@@ -20,11 +23,22 @@
 	</c:if>
 	<h3>댓글</h3>
 	<div>
-		<form action="cmt" method="post">
-			<input type="hidden" name="iboard" value="${vo.iboard }">
+		<form id="insFrm" action="cmt" method="post">
+			<input type="hidden" name="icmt" value="0">
+			<input type="hidden" name="iboard" value="${requestScope.vo.iboard }">
 			<div>
 				<textarea name="cmt" placeholder="댓글내용"></textarea>
 				<input type="submit" value="대글잓성">
+			</div>
+		</form>
+		
+		<form id="updFrm" action="cmt" method="post" class="hidden">
+			<input type="hidden" name="icmt" value="0">
+			<input type="hidden" name="iboard" value="${requestScope.vo.iboard }">
+			<div>
+				<textarea name="cmt" placeholder="댓글내용"></textarea>
+				<input type="submit" value="댓글수정">
+				<input type="button" value="수정취소" onclick="showInsFrm()">
 			</div>
 		</form>
 	</div>
@@ -43,7 +57,7 @@
 					<td>${item.regdate }</td>
 					<td>
 						<c:if test="${sessionScope.loginUser.iuser==item.iuser }">
-							<a href=""><button>수정</button></a>
+							<button onclick="updCmt(${item.icmt}, '${item.cmt.trim() }');">수정</button>
 							<button onclick="delCmt(${item.iboard}, ${item.icmt} )">삭제</button>
 						</c:if>
 					</td>
