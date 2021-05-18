@@ -20,5 +20,35 @@
 			<a href="mod?iboard=${vo.iboard }">수정</a>
 		</div>
 	</c:if>
+	<form action="cmt" method="post">
+		<textarea name="cmt"></textarea>
+		<input type="hidden" name="icmt" value="0">
+		<input type="hidden" name="iboard" value="${vo.iboard}">
+		<input type="submit" value="댓글등록">
+	</form>
+	<form action="cmt" method="post" class="hidden">
+		<textarea name="cmt"></textarea>
+		<input type="hidden" name="icmt" value="0">
+		<input type="hidden" name="iboard" value="${vo.iboard}">
+		<input type="submit" value="댓글등록">
+	</form>
+	<table>
+		<tr>
+			<th>내용</th><th>작성자</th><th>작성일</th><th>비고</th>
+		</tr>
+		<c:forEach var="item" items="${list }">
+			<tr>
+				<td>${item.cmt }</td>
+				<td>${item.unm }</td>
+				<td>${item.regdate }</td>
+				<td>
+					<c:if test="${loginUser.iuser==item.iuser }">
+						<button>수정</button>
+						<button>삭제</button>
+					</c:if>
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>
