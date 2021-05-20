@@ -6,12 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>리스트</title>
+
 <link rel="stylesheet" href="/res/css/boardList.css">
 <script defer src="/res/js/boardList.js"></script>
 <!-- defer을 적으면 맨밑에 적은 효과가 남 -> 화면먼저 띄우기 -->
 </head>
 <body>
-	<h1>List</h1>
+	<h1>List </h1>
 	<c:if test="${not empty loginUser}">
 		<a href="/user/logout">로그아웃</a>
 		<div>${sessionScope.loginUser.unm}님 안녕하세요</div>

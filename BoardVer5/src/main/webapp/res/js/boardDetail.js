@@ -12,14 +12,14 @@ function delCmt(iboard,icmt){
 function updCmt(icmt, cmt){
 	console.log('icmt : %d',icmt);
 	console.log('cmt : %s',cmt);
-	updFrm.icmt.value=icmt;
-	updFrm.cmt.value=cmt;
+	updFrmElem.icmt.value=icmt;
+	updFrmElem.cmt.value=cmt;
 	
-	insFrm.className = 'hidden';
-	updFrm.className = '';
+	insFrmElem.className = 'hidden';
+	updFrmElem.className = '';
 }
 
 function showInsFrm(){
-	insFrm.className='';
-	updFrm.className='hidden';
+	insFrmElem.className='';
+	updFrmElem.className='hidden';
 }

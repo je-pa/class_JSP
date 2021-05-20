@@ -19,6 +19,8 @@ public class DetailServlet extends HttpServlet {
 		BoardVO boardParam = new BoardVO();
 		int iboard =MyUtils.getParamInt("iboard", request);
 		boardParam.setIboard(iboard);
+		boardParam.setIuser(MyUtils.getLoginUserPK(request));
+		
 		request.setAttribute("vo", BoardDAO.selBoard(boardParam));
 		request.setAttribute("cmtList", CmtDAO.selCmtList(iboard));
 		MyUtils.openJSP("board/detail", request, response);
