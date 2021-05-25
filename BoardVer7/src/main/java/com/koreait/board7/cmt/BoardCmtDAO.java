@@ -52,6 +52,7 @@ public class BoardCmtDAO {
 				vo.setRegdata(rs.getString("regdate"));
 				vo.setIuser(rs.getInt("iuser"));
 				vo.setWriterNm(rs.getString("writerNm"));
+				vo.setIboard(param.getIboard());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
