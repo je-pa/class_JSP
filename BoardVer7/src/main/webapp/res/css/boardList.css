@@ -1,0 +1,4 @@
+@charset "UTF-8";
+
+.record {cursor:p; }
+.record:hover {background-color: gray;}
