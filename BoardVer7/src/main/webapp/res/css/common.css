@@ -1,0 +1,21 @@
+@charset "UTF-8";
+hrml, body{
+	margin:0;
+	padding:0;
+}
+header nav{
+	height:50px;
+	background-color:#3409db;
+}
+
+header nav ul{
+	display:flex;	
+	height:100%;
+	align-content:center;
+	
+	list-style:none;
+}
+header nav ul li{
+	margin-left: 20px;
+	text-align:50px;
+}
