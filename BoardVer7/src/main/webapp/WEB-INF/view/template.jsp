@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/res/css/common.css">
+<script defer src="/res/js/common.js"></script>
 <title>${requestScope.title }</title>
 </head>
 <body>
@@ -24,6 +25,8 @@
 			</ul>
 		</nav>
 	</header>
-	<jsp:include page="/WEB-INF/view/${requestScope.jsp}.jsp"></jsp:include>
+	<section>
+		<jsp:include page="/WEB-INF/view/${requestScope.jsp}.jsp"></jsp:include>
+	</section>
 </body>
 </html>

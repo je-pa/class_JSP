@@ -5,7 +5,7 @@ hrml, body{
 }
 header nav{
 	height:50px;
-	background-color:#3409db;
+	background-color:rgb(166, 174, 230);
 }
 
 header nav ul{
@@ -17,5 +17,8 @@ header nav ul{
 }
 header nav ul li{
 	margin-left: 20px;
-	text-align:50px;
+}
+section { padding-left: 40px; padding-right:40px}
+.colorRed{
+	color:red;
 }
