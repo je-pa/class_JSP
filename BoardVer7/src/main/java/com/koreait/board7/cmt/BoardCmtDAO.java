@@ -38,7 +38,7 @@ public class BoardCmtDAO {
 		ResultSet rs = null;
 		
 		String sql="SELECT a.icmt,a.cmt, a.regdate, b.iuser, b.unm AS writerNm FROM t_board_cmt a "
-				+ " INNER JOIN t_user b ON a.iuser = b.iuser where a.iboard=?";
+				+ " INNER JOIN t_user b ON a.iuser = b.iuser where a.iboard=? order by a.icmt asc";
 		try {
 			con=DBUtils.getCon();
 			ps=con.prepareStatement(sql);
@@ -60,5 +60,25 @@ public class BoardCmtDAO {
 			DBUtils.close(con, ps,rs);
 		}
 		return list;
+	}
+	public static int delBoardCmt(BoardCmtEntity param) {
+		int result =0;
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql="DELETE FROM t_board_cmt WHERE icmt=? AND iuser=?";
+		
+		try {
+			con=DBUtils.getCon();
+			ps=con.prepareStatement(sql);
+			ps.setInt(1, param.getIcmt());
+			ps.setInt(2, param.getIuser());
+			
+			result=ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBUtils.close(con, ps);
+		}
+		return result;
 	}
 }

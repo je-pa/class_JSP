@@ -28,7 +28,7 @@ public class BoardCmtInsSelServlet extends HttpServlet {
 		Gson gson = new Gson();
 		String json = gson.toJson(list);
 		System.out.println("json : "+json);
-		
+		response.setCharacterEncoding("UTF-8");
 		response.getWriter()
 		.append(json);
 	}
@@ -44,7 +44,7 @@ public class BoardCmtInsSelServlet extends HttpServlet {
 		param.setIuser(iuser);
 		
 		int result = BoardCmtDAO.insBoardCmt(param);
-		
+		response.setCharacterEncoding("UTF-8");
 		response.getWriter()
 		.append("{")
 		.append("\"result\":")

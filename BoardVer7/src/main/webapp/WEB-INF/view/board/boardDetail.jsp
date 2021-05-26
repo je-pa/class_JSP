@@ -7,14 +7,15 @@
 	<div>작성일 : ${requestScope.data.regdt}</div>
 	<div>작성자 : ${requestScope.data.writerNm}</div>
 	<div><c:out value="${requestScope.data.ctnt}"/></div>
-
-<div>
-	<form id="cmtFrm" data-iboard="${param.iboard}" onsubmit="return false;">
-		<input type="text" id="cmt">
-		<input type="button" value="댓글달기" onclick="regCmt();">
-	</form>
-</div>
-<div id="cmtList"></div>
+<c:if test="${not empty sessionScope.loginUser }">
+	<div>
+		<form id="cmtFrm" onsubmit="return false;">
+			<input type="text" id="cmt">
+			<input type="button" value="댓글달기" onclick="regCmt();">
+		</form>
+	</div>
+</c:if>
+<div id="cmtList"data-login_user_pk="${sessionScope.loginUser.iuser}" data-iboard="${param.iboard}"></div>
 
 <script src="/res/js/BoardDetail.js"></script>
 
