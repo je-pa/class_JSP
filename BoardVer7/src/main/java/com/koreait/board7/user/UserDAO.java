@@ -35,7 +35,7 @@ public class UserDAO {
 		ResultSet rs = null;
 		
 		UserEntity result = null;
-		String sql = "SELECT iuser, uid, upw, unm FROM t_user WHERE uid=?";
+		String sql = "SELECT iuser, uid, upw, unm,profileImg FROM t_user WHERE uid=?";
 		try {
 			con= DBUtils.getCon();
 			ps=con.prepareStatement(sql);
@@ -47,6 +47,7 @@ public class UserDAO {
 				result.setUid(rs.getString("uid"));
 				result.setUpw(rs.getString("upw"));
 				result.setUnm(rs.getString("unm"));
+				result.setProfileImg(rs.getString("profileImg"));
 			}
 			return result;
 		} catch (Exception e) {

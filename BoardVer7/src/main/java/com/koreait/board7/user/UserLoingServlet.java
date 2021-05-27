@@ -28,7 +28,6 @@ public class UserLoingServlet extends HttpServlet {
 			request.setAttribute("errMsg","아이디 없음");
 		}else if(BCrypt.checkpw(request.getParameter("upw"),result.getUpw()/*암호된게 뒤에로*/ )) {
 			result.setUpw(null);
-			
 			request.getSession().setAttribute("loginUser", result);
 			response.sendRedirect("/board/list");	
 			return;
