@@ -2,9 +2,16 @@
 hrml, body{
 	margin:0;
 	padding:0;
+	height:100vh;
+}
+body{
+	display:flex;
+	flex-direction :column;
 }
 header nav{
+	
 	height:50px;
+	width:100%;
 	background-color:rgb(166, 174, 230);
 }
 
@@ -12,7 +19,7 @@ header nav ul{
 	display:flex;	
 	height:100%;
 	align-content:center;
-	
+	width:100%;
 	list-style:none;
 }
 header nav ul li{
@@ -22,3 +29,4 @@ section { padding-left: 40px; padding-right:40px}
 .colorRed{
 	color:red;
 }
+.displayNone{display:none !important;}

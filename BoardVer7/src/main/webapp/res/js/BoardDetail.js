@@ -1,5 +1,6 @@
 var cmtFrmElem = document.querySelector('#cmtFrm');
 var cmtListElem = document.querySelector('#cmtList');
+var cmtModModalElem= document.querySelector('#modal');
 function regCmt(){
 	var cmtVal = cmtFrmElem.cmt.value;
 	
@@ -115,7 +116,14 @@ function makeCmtElemList(data){
 			//삭제버튼 클릭
 			delBtn.addEventListener
 			('click'/*이벤트가 무엇인지 hover*/ ,function(){
-				delAjax(item.icmt);
+				if(confirm('삭제하시겠습니까?')){//확인(true)과 취소(false)
+					delAjax(item.icmt);					
+				} 
+			})
+			//수정버튼 클릭
+			modBtn.addEventListener('click',function(){
+				//댓글 수정 모달창 띄우기
+				openModModal(item);
 			})
 			
 			delBtn.innerText = '삭제';
@@ -150,5 +158,48 @@ function delAjax(icmt){
 			break;
 		}
 	});
+}
+
+function modAjax(){
+	var cmtModFrmElem = document.querySelector('#cmtModFrm');
+	var param = {
+		icmt:cmtModFrmElem.icmt.value,
+		cmt:cmtModFrmElem.cmt.value
+	}
+	const init={
+		method:'POST',
+		body:new URLSearchParams(param)
+	};
+	
+	fetch('/board/cmtDelUpd',init) //init안하면 디폴트 형식으로 돌아감
+	.then(function(res){
+		return res.json();
+	})
+	.then(function(myJson){
+		switch(myJson.result){
+		case 0:
+			alert('댓글 수정 실패');
+			break;
+		case 1:
+			closeModModal();
+			getListAjax();
+			break;
+		}
+	});
+}
+
+
+function openModModal({icmt,cmt}){//필요한 값만 빼올수 있다
+	cmtModModalElem.className='';
+	
+	var cmtModFrmElem = document.querySelector('#cmtModFrm');
+	console.log('icmt : '+icmt);
+	console.log('cmt : '+cmt);
+	cmtModFrmElem.icmt.value = icmt;
+	cmtModFrmElem.cmt.value = cmt;
+}
+
+function closeModModal(){
+	cmtModModalElem.className='displayNone';
 }
 getListAjax();//이 파일 임포트되면 함수 호출됨
