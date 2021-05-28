@@ -20,6 +20,14 @@
 				</c:choose>
 
 			</td>
+			<c:choose>
+				<c:when test="${empty item.profileImg }">
+					<c:set var="img" value="/res/img/noprofile.jpg"/>
+				</c:when>
+				<c:otherwise>
+					<c:set var="img" value="/res/img/user/${item.iuser }/${item.profileImg }"/>
+				</c:otherwise>
+			</c:choose>
 			<td>
 				<c:choose>
 					<c:when test="${param.searchType eq 4}">
@@ -29,6 +37,7 @@
 						${item.writerNm}
 					</c:otherwise>
 				</c:choose>
+				<img src ="${img}" class="profileImg">
 			</td>
 			<td>${item.regdt}</td>
 		</tr>		

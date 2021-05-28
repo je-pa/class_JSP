@@ -67,7 +67,7 @@ public class BoardDAO {
 		Connection con =null;
 		PreparedStatement ps =null;
 		ResultSet rs = null;
-		String sql = "SELECT a.iboard, a.title, a.iuser, a.regdt ,b.unm as writeNm "
+		String sql = "SELECT a.iboard, a.title, a.iuser, a.regdt ,b.unm as writeNm ,b.profileImg"
 				+ " FROM t_board a INNER JOIN t_user b ON a.iuser=b.iuser";
 		switch(param.getSearchType()) {
 		case 1://제목+내용
@@ -102,6 +102,7 @@ public class BoardDAO {
 				vo.setIuser(rs.getInt("iuser"));
 				vo.setRegdt(rs.getString("regdt"));
 				vo.setWriterNm(rs.getString("writeNm"));
+				vo.setProfileImg(rs.getString("profileImg"));
 				list.add(vo);
 			}
 			return list;
